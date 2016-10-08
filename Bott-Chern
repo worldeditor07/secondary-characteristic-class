@@ -1,0 +1,726 @@
+\documentclass[12pt]{article}
+\usepackage{latexsym}
+%\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{theorem}
+\usepackage{amsmath}
+\usepackage{amscd}
+%\usepackage{array}
+\usepackage{amsthm}
+% \usepackage{epsfig}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{amscd}
+\usepackage{tikz-cd}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{epsfig}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{amscd}
+\usepackage{tikz-cd}
+\usepackage{slashed}
+
+\DeclareMathOperator{\Gl}{Gl}
+
+%\setlength{\topmargin}{1in}
+\setlength{\headheight}{0in}
+\setlength{\textheight}{8.5in}
+\setlength{\oddsidemargin}{0.55in}
+%\setlength{\evensidemargin}{-0.25in}
+\setlength{\textwidth}{5.87in}
+\setlength{\headsep}{-.19in}
+
+\pagestyle{plain}
+\newcommand{\doublespaced}{\renewcommand{\baselinestretch}{2}\normalfont}
+\newcommand{\singlespaced}{\renewcommand{\baselinestretch}{1}\normalfont}
+%\newcommand{\draftspaced}{\singlespaced} %for draft only 
+\newcommand{\draftspaced}{\doublespaced} %for final version
+
+%\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem*{main}{Main~Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\numberwithin{equation}{section}
+
+\newcommand{\SU}{\textrm{SU}}
+\newcommand{\RKK}{\textrm{RKK}}
+\newcommand{\KK}{\textrm{KK}}
+\newcommand{\K}{\textrm{K}}
+\newcommand{\f}{\mathfrak}
+\newcommand{\mb}{\mathbb}
+\newcommand{\mr}{\mathrm}
+\newcommand{\mf}{\mathbf}
+\newcommand{\mc}{\mathcal}
+\newcommand{\ms}{\mathscr}
+\newcommand{\e}{\emph}
+\newcommand{\vp}{\varphi}
+\newcommand{\Diff}{\textrm{Diff}}
+\newcommand{\Norm}{\textrm{Norm}}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\ch}{\textrm{char}}
+\newcommand{\lcm}{\textrm{lcm}}
+\newcommand{\norm}[1]{\left\lvert#1\right\rvert}
+\newcommand{\PA}{\mc{P}_{\mc{A}^{0,\bullet}(X)}}
+\newcommand{\Db}{\mc{A}^{0,\bullet}(X)}
+\newcommand{\del}{\partial}
+\newcommand{\delbar}{\bar{\partial}}
+\newcommand{\pr}{\prime}
+\newcommand{\dpr}{\prime\prime}
+\newcommand{\tr}{\mr{Tr}_s}
+\newcommand{\tE}{\widetilde{E}^{\bullet}}
+\newcommand{\mE}{\mb{E}}
+\newcommand{\tmE}{\widetilde{\mE}}
+\newcommand{\tmEh}{\widetilde{\mE}_h}
+\newcommand{\tmEhp}{\widetilde{\mE}^{\pr}_h}
+\newcommand{\tmEdp}{\widetilde{\mE}^{\dpr}}
+\newcommand{\tR}{\widetilde{\mc{R}}}
+\newcommand{\tRh}{\tR_h}
+\newcommand{\mM}{\mc{M}}
+\newcommand{\mAE}{\mc{A}^{\bullet}(X,(E^{\bullet}))}
+\newcommand{\mAEE}{\mc{A}^{\bullet}(X,\End^{\bullet}(E^{\bullet}))}
+\newcommand{\End}{\mathrm{End}}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+%\newcommand{\ol}{\overline}
+\newcommand*{\triple}[2][.1ex]{%
+	\mathrel{\vcenter{\offinterlineskip%
+			\hbox{$#2$}\vskip#1\hbox{$#2$}\vskip#1\hbox{$#2$}}}}
+\newcommand*{\triplerightarrow}{\triple{\rightarrow}}
+\newcommand*{\tripleleftarrow}{\triple{\leftarrow}}
+
+\begin{document}
+	\section {Foliation Algebra and Cross Product Algebra}
+	Let $V$ be a smooth manifold foliated by $F\subset TV$, an integrable sub-bundle of a constant dimension. Denote the holonomy groupoid as $\mathscr{G}$ and its associated reduced groupoid C*-algebra by $C^*(\mathscr{G})$. The following well known theorem allows us to work with an \'etale groupoid which is Morita equivalent to the full foliation groupoid. 
+	
+	\begin{theorem}
+		If $N \hookrightarrow V$ is a transversally embedded submanifold and meets every leaf at least once, we denote the pull back groupoid by $\mathscr{G}_N$ which is a subgroupoid in $\mathscr{G}$, then the corresponding reduced groupoid C*-algebra $C^*(\mathscr{G}_N)$ is strongly Morita equivalent to $C^*(\mathscr{G})$.
+	\end{theorem}
+	
+	
+	\begin{example}
+		Let $A_{\theta}$ be the classical irrational rotation algebra. It may be derived as the reduction groupoid algebra of the Kronecker foliation on the 2 tori.  That is, we consider the $\mathbb{Z}^2$ translation invariant distribution on the plane $\mathbb{R}^2$ given by $$\mathrm{Ker}({d}x-{\theta} {d}y)$$ It decsend to a foliation on the torus $T=\mathbb{R}^2/{\mathbb{Z}^2}$ where the image of ${\mathbb{R}\times 0}$ forms a transversally embedded circle $N_{1,0}=\{(e^{it},1),t\in \mathbb{R}\}$. The corresponding reduced groupoid algebra is $A_{\theta}$\\
+		
+		In this special case, one may choose a different transversal submanifold to study. Fix $\theta$ and for $(p,q)$ a pair of coprime integer numbers and let $(p^{\prime},q^{\prime})$ be integers that solves $pq^{\prime}-qp^{\prime}=1$, then we define $\theta^{\prime}=\frac{p\theta-q}{p^{\prime}\theta-q^{\prime}} $. Consider the closed curve $N_{p,q}=\{(e^{ipt,}, e^{iqt} ), t\in \mathbb{R}\}$, which is also transversal to the foliation and meets each leaf. The etale groupoid for $N_{p,q}$ is: 
+		
+		$$\mathscr{G}^{(1)}=S^1 \times \mathbb{Z}, \mathscr{G}^{(0)}=S^1$$ with source and range maps given by $s(e^{it},n)=e^{it}, r(e^{it},n)=e^{i(t+n\theta^{\prime})}$ 
+		
+		Consequently, we have $A_{\theta^{\prime}}$ is strongly Morita equivalent to $A_{\theta}$ as they are both strongly Morita equivalent to the full foliation algebra. In [ref: Rieffel] proved the converse is also true, that is, if two irrational rotation algebras are strongly Morita equivalent, then they are related by the above construction. 
+	\end{example}
+	
+	This is a special case of a general construction of foliation with a prescribed etale groupoid as its reduction holonomy groupoid. In the situation where the groupoid is of the form $V\rtimes \Gamma$, and $\Gamma$ is the fundamental group $\pi_1(Y,y_0)$ of a connected manifold $Y$, we may first construct a foliation on $\tilde{Y} \times V$ by copies of $Y \times pt$, where $\tilde{Y}$ is the universal cover of $Y$. Now $\Gamma$ acts on $\tilde{Y} \times V$ by diagonal action which preserves the foliation, therefore the foliation descend to an foliation on $\tilde{Y} \times V /\Gamma$ and we may use image of $V$ as a transverse manifold and $\Gamma$ will be the corresponding holonomy.
+	
+	In general, use the simplical manifold and simplical foliation as [Ref:Bott], for any etale groupoid $\mathscr{G}$, it may be realized as the reduction holonomy groupoid of a simplicial foliation as follows:
+	
+	\begin{definition}
+		For a simplicial manifold $M^{\bullet}$, a simplical foliation on $M^{\bullet}$ is a foliation $\mathscr{F}^k$ on each $M^k$ such that they pull back to each other under structure maps. A complete transverse manifold is a simplicial submanifold $N^{\bullet}$, where in each degree, $N^k$ is a complete transverse to $(M^k, \mathscr{F}^k)$
+	\end{definition} 
+	
+	The previous example $V\rtimes\Gamma$ can be viewed as foliating the simplicial manifold 
+	$$V \leftleftarrows V\times\Gamma \tripleleftarrow V\times\Gamma\times\Gamma \dots\dots$$
+	by points on each degree, take $Y$ as $B\Gamma$, the resulting foliation on the geometric realization is exactly the above foliation. For general etale groupoid $\mathscr{G}$, we may foliate the nerve of the groupoid $N\mathscr{G}^{\bullet}$ by points 
+	
+	Now we will apply the above observation in the following case. Let $\Sigma$ be a Riemann surface of genus $g \ge 2$ and denote its fundamental group $\pi_1(\Sigma)$ by $\Gamma$. Note that $E\Gamma= \mathbb{D}$ the unit disk in complex plane and $B\Gamma= \Sigma$. Consider a finite dimensional special unitary representation of $\Gamma$: $\rho: \Gamma \rightarrow \SU(n)$ and form the fibred product $V=E\Gamma \times_{\Gamma} \SU(n)$. The manifold is naturally foliated by the images of $E\Gamma \times \{A\}$, $A \in \SU(n) $ and the holonomy is trivial since the leaves are simply connected. The image of ${z_0}\times \SU(n)$ for a fixed $z_0 \in \mathbb{D}$ is an embedded submanifold, transversal to the foliation and meets all the leaves. These facts hold because the foliation came from the obvious $\Gamma$-invariant foliation on $E\Gamma \times \SU(n)$ and all the statments are trival here. The reduced groupoid $\mathscr{G}_{\SU(n)}$ can be descriped as: $\mathscr{G}_{\SU(n)}=\{(x,y), \; y=\rho(\gamma)x\; \text{for some}\, \gamma \in \Gamma \} \subset \SU(n)\times \SU(n)$, the range and source maps are given by $ r(x,y)=y, s(x,y)=x $ respectively. We see that the reduced groupoid C* algebra $C^*(\mathscr{G}_{SU(n)})$ is isomorphic to the cross product algebra $C(\SU(n))\rtimes_{\rho} \Gamma$. Here $C(\SU(n))$ is the algebra of continuous complex valued functions on \SU(n) and $\rho$ is the induced action given by $(\gamma \cdot f)(x)=f(\rho(\gamma^{-1})x)$, we denote it by the same symbol. So the foliation algebra itself is strongly Morita equivalent to this cross product algebra. 
+	
+	
+	\section{Locally \textrm{RKK}-trivial algebras}
+	In this section, ${A},{B}$ will be $\mathbb{Z}/{2\mathbb{Z}}$ graded C* algebras, $X$ a locally compact Hausdorff space, and $C_0(X)$ its algebra of complex valued continuous functions that vanishes at infinity. $G$ is a locally compact topological group. 
+	
+	\begin{definition}
+		A C* algebra ${A}$ is called a $C_0(X)$-algebra if there is a non-degenerate homomorphism $\phi: C_0(X) \rightarrow \mathscr{Z}M(A)$. Here $\mathscr{Z}M(A)$ denotes the center of the multiplier algebra of ${A}$. When $A$ and $B$ are further $G$-algebras for the locally compact group $G$, we assume the $G$-action commute with $C_0(X)$-action. That is $\gamma \cdot(\phi(f)a)=\phi(\gamma \cdot f)a, \gamma \in G, f\in C_0(X), a\in A$, $\phi$ the structure map as above.
+	\end{definition}
+	
+	
+	\begin{definition}
+		A Kasparov $(A,B)$-bimodule is a countably generated $\mathbb{Z}/{2\mathbb{Z}}$ graded Hilbert $B$-module $E$ with a degree 0 homomorphism $\psi: A \rightarrow L(E_B)$. If $A,B$ are $G$-algebras, then we require that $G$ acts on $E$ as grade preserving linear automorphisms and satisfies:
+		\begin{enumerate}[(a)]
+			\item $G \times E \rightarrow E$ is norm continuous 
+			\item $(gx)(gb)=g(xb), \forall g \in G, x\in E, b\in B$
+			\item ${\langle g(x),g(y) \rangle}_B=g({\langle x,y \rangle}_B)$
+		\end{enumerate}
+	\end{definition}
+	
+	
+	\begin{definition}
+		A Kasparov cycle for $G-C_0(X)$ algebras $A,B$ is a pair $(E,T)$ where $E$ is a $(A,B)$ bimodule and further satisfies that for any $f \in C_0(X),a \in A, b\in B, x\in E$, we have $(fa)xb=ax(fb)$. $T$ is a degree 1 G-continuous operator in $L(E_B)$ and satisfies the following conditions:
+		\begin{enumerate}[(a)]
+			\item $ a(T-T^*)\in K(E_B)\; \; \forall a\in A$
+			\item $a(T^2-1) \in K(E_B)\; \; \forall a\in A$
+			\item $[a,T] \in K(E_B)\; \; \forall a\in A$
+		\end{enumerate}
+		\noindent
+		We view two Kasparov cycle as equivalent if there is a grade preserving isometric intertwining operator. We say two Kasparov $(A,B)$-cycles $(E_i,T_i), i=0,1$ are homotopic if there is a Kasparov $(A,B[0,1])$-cycle $(\tilde{E},\tilde{T})$ whose evaluation at $t=0,1$ are unitary equivalent to $(E_0,T_0)$ and $(E_1,T_1)$ respectively. The homotopy classes of Kasparov $(A,B)$-cycles form an abelian group $\textrm{RKK}^G(X;A,B)$ under direct sum.  
+	\end{definition}
+	
+	\begin{definition}
+		Two $C_0(X)$-$G$ algebras $A,B$ are called $\textrm{RKK}^G$ equivalent if there is an invertible element in $\textrm{RKK}^G(X;A,B)$. An $C_0(X)$ algebra $A$ is called locally $\textrm{RKK}^G$-trivial if for each point $x\in X$, there exist an open neighborhood $U$ around $x$ such that $A_{U}\triangleq C_0(U)\otimes_{C_0(X)}A$ is $\textrm{RKK}^G$ equivalent to $C_0(U)\otimes A_x$, both viewed now as $C_0(U)-G$ algebras. Here $A_x=A/{A_{X-\{x\}}}$ is called the fibre of $A$ at $x$. 
+	\end{definition}
+	
+	\begin{example}
+		Let $H_3$ be the 3 dimensional discrete Heisenberg group, its group algebra is $C^*(H_3)$. The center of $C^*(H_3)$ is $C^*(\mathbb{Z})\cong C(S^1)$ which provide $C^*(H_3)$ the structure of a $C(S^1)$-algebra. The fibre at $e^{i\theta} \in S^1$ is isomorphic to the irrational rotation algebra $A_{\theta}=C(S^1)\rtimes_{\theta}\mathbb{Z}$. This algebra is locally $\textrm{RKK}$ trivial but not "globally" [ref. E.N.O]. As a consequce, all the irrational rotation algebras are $\KK$-equivalent to each other, and in particular, to the commutative algebra $C(T^2)$. 
+	\end{example}
+	
+	
+	
+	\begin{example}
+		Let $\mathscr{M}_n$ be the moduli space of irreducible special unitary representations of $\Gamma$ on $\mathbb{C}^n$. Consider the algebra $C_0(\mathscr{M}_n\times \SU(n))\rtimes \Gamma$, the $\Gamma$ action is given by 
+		$(\gamma F)(\rho,x)=F(\rho, \rho(\gamma^{-1})x), \rho \in \mathscr{M}_n, x \in \SU(n), \gamma \in \Gamma$
+		\noindent
+		There is an obvious $C_0(\mathscr{M}_n)$ structure on the cross product algebra. The aim of this article is to show that the algebra is also locally $\textrm{RKK}$ trivial. 
+	\end{example}
+	
+	
+	We view this example as a generalization of the previous one for the following reasons. If instead of the surface $\Sigma$ with its fundamental group $\Gamma$, we take the only 1-dimensional closed manifold $S^1$ and its fundamental group $\mathbb{Z}$, and consider all 1-dimensional unitary representations, the space of representation is $\mathscr{M}=S^1$. Now form the cross product algebra over $\mathscr{M}$, we get $C(\mathscr{M}\times S^1)\rtimes \mathbb{Z}$, where the group action is given by $(n\cdot F)(e^{i\theta}, e^{it})=F(e^{i\theta}, e^{it+in\theta}), n \in \mathbb{Z}$.
+	
+	\begin{proposition}
+		$C(\mathscr{M}\times S^1)\rtimes \mathbb{Z}$ is isomorphic to $C^*(H_3)$, the group C* algebra of the 3 dimensional discrete Heisenberg group.
+	\end{proposition}
+	\begin{proof}
+		$C(\mathscr{M}\times S^1)= C(T^2) \cong C^*(\mathbb{Z}^2)$ via Fourier Transform. The group algebra is generated by two commuting unitaries $u,v$. The transformed action of $\mathbb{Z}$ is given on the generator $w$ as: $w\cdot u=u$, $w\cdot v=uv$. Denote their canoncial images in the cross product algebra by the same symbols, we have the relations among these unitaries are: 
+		$$uv=vu, wu=uw, wv=uvw$$
+		This is exactly the generating relations for the group algebra of $H_3$. 
+	\end{proof}
+	
+	
+	\section{Lorentz group $SO_0(2,1)$ and $\K\K$ theory}
+	In this section, we will prove that the family of cross-product algebras constructed via deformation of surface group action provide us an example of \textrm{RKK}-fibrations. By chasing the proof, we can construct \textrm{RKK}-fibrations by deforming group actions as long as the group satisfies strong Baum-Connes conjecture and the actions are deformed smoothly.
+	We start by fixing some notations:
+	\begin{enumerate}[(a)]
+		\item $\Sigma$ is genus $g\ge 2$ Riemann surface
+		\item $\Gamma$ its fundamental group, $B\Gamma=\Sigma$, $E\Gamma=\mathbb{D}$ the unit               disk in $\mathbb{C}$
+		\item $G=SO_0(2,1)$ the Lorentz group, acts on $\mathbb{D}$ as automorphism group,                 $\Gamma$ is a discrete subgroup of $G$
+		\item $K=SO(2)$ the maximal compact subgroup of $G$, acts on $\mathbb{D}$ as                       rotations
+		\item $\mathbb{D}\cong G/K$, let $V$ be the cotangent space at $0 \in \mathbb{D}$,                 $C_{\tau}(\mathbb{G/K})$ is the algebra of sections of the Clifford algebra                   bundle vanishing at infity
+		\item $\rho$ a special unitary irreducible representation of $\Gamma$ on                           $\mathbb{C}^n$, $\mathscr{M}_n$ the moduli space of conjugacy classes of                     representations
+		\item $A_0=C_0(\mathscr{M}_n\times \SU(n))$ , $B_0=Ind_{\Gamma}^{G}A_0\triangleq                     C_0(G\times_{\Gamma} A_0 )$ , $A=A_0\rtimes \Gamma$ , $B=B_0   \rtimes G$
+	\end{enumerate}
+	It's a classical result that $A$ is strongly Morita equivalent to $B$, and in our situation, it is $C_0(\mathscr{M}_n)$-Morita equivalent to $B$. This implies $A$ is $\RKK$-equivalent to $B$. Note that local $\RKK$-triviality is a property preserved under $\RKK$-equivalence, therefore it suffices to prove our result for $B$. 
+	
+	\begin{theorem}(G.G.Kasparov)
+		For the Lorentz group $G$, there exist canonical elements $\alpha \in \KK^{G}(\mathbb{C},C_{\tau}(G/K))$, $\beta \in \KK^{G}(C_{\tau}(G/K),\mathbb{C})$ such that they are inverse to each other. 
+	\end{theorem}
+	
+	Now consider $\alpha_{1}=id_{B_0}\cdot \alpha \in \RKK^G(\mathscr{M}_n;B_0,B_0\otimes C_{\tau}(G/K))$ which is invertible, apply the descent homomorphism we get another invertible element $\alpha_2=j_G(\alpha_1) \in \RKK(\mathscr{M}_n,B_0 \rtimes G, (B_0\rtimes C_{\tau}(G/K))\rtimes G)$.  Now observe that $C_{\tau}(G/K)=Ind_K^{G}(Cl(V))$, therefore by adjunction $$B_0\otimes Ind_{K}^{G}(Cl(V))=Ind_{K}^{G}(Res_{G}^{K}B_0 \otimes Cl(V))$$ where $Res$ is simply forgetting the $G$-action and restrict it to $K$ action. Now we apply the classical Morita equivalence again to get $$(B_0\rtimes C_{\tau}(G/K))\rtimes G=Ind_{K}^{G}(Res_{G}^{K}B_0 \otimes Cl(V))\rtimes G \underset{Morita}{\sim} (Res_{G}^{K}B_0 \otimes Cl(V)) \rtimes K$$ 
+	
+	So we get an invertible element $\alpha_2 \in \RKK(\mathscr{M}_n;B,(Res_{G}^{K}B_0 \otimes Cl(V)) \rtimes K)$, now we apply the equivairant Bott periodicity to get $$(Res_{G}^{K}B_0 \otimes Cl(V)) \rtimes K \underset{\RKK}{\sim} Res_{G}^{K}B_0 \rtimes K$$
+	We therefore arrived at the following $\RKK$-version of Kasparov's reduction to maximal compact subgroup.
+	
+	\begin{corollary}
+		There is a \RKK equivalence between $B_0\rtimes G$ and $B_0\rtimes K$
+	\end{corollary}
+	
+	\begin{lemma}(M.A.Rieffel)
+		If $\Gamma_1, \Gamma_2$ are subgroups of $G$, such that the action of $\Gamma_1$ on $G/\Gamma_2$ is free and proper. If $D$ is a $\Gamma_2$-algebra, then the algebras $Ind_{\Gamma_2}^{G}D\rtimes \Gamma_1$ is strongly Morita equivalent to $C_0(\Gamma_1 \backslash G \times_{\Gamma_2} D)$.
+	\end{lemma}
+	
+	Recall $B_0=Ind_{\Gamma}^{G}A_0$, $B_0 \rtimes K= Ind_{\Gamma}^{G}A_0 \rtimes K$. Note the $K$ action on $G/\Gamma$ is free and proper, this is because $\Gamma$ act on $G/K=\mathbb{D}$ freely and properly. Once we checked the imprimitivity bimodule satisfies the $C_0(\mathscr{M_n})$ compatiblity in the defining properties of Kasparov cycle, it would establish a $C_0(\mathscr{M}_n)$ Morita equivalence: $C_0(K\backslash G \times_{\Gamma}A_0) \underset{Morita}{\sim} B_0 \rtimes K$. 
+	The imprimitivity bimodule is constructed in the following way. Define on $E=C_c(G\times_{\Gamma}A_0)$ the right action of $C_0(K \backslash G \times_{\Gamma_2}A_0)$ by pointwise multiplication and the left action of $C_c(K,C_0(G\times_{\Gamma}A_0))$ by the formula 
+	$$ (a\cdot e)(t)=\int_{K} a(s,t)e(s^{-1}t) \mathrm{d}s, e\in E, s\in K, t\in G$$
+	With a suitable inner product and taking completion, we get the desired bimodule, still denoted by $E$
+	
+	\begin{lemma}
+		For any $f \in C_0(\mathscr{M}_n),a \in C_c(K,C_0(G\times_{\Gamma}A_0)), b\in C_0(K \backslash G \times_{\Gamma}A_0), e \in C_c(G\times_{\Gamma}A)$, we have $(fa)eb=ae(fb)$. Therefore the completed module is a Kasparov cycle for the $C_0(\mathscr{M}_n)$ algebras.
+	\end{lemma}
+	
+	\begin{proof}
+		Note in our situation, $G/{\Gamma}$ and $K$ are automatically compact, and $A_0$ is the algebra of functions on $\mathscr{M}_n \times \SU(n)$. We may rewrite $C_c(K,C_0(G\times_{\Gamma}A_0))$ as $$C_0(\mathscr{M}_n, C(K \times G \times_{\Gamma} \SU(n)))$$ Similarly the pre-completed module $E$ can be viewed as $$C_0(\mathscr{M}_n, C(G\times_{\Gamma} \SU(n)))$$ and $C_0(K \backslash G \times_{\Gamma}A_0)$ as $$C_0(\mathscr{M}_n, C(K \backslash G \times_{\Gamma}\SU(n)))$$
+		The elements $a,b,e$ can now be viewed as sections of algebras (resp.modules) over the parameter space $\mathscr{M}_n$. And the equality follows since fibrewise at $\rho \in \mathscr{M}_n$, they are both muliplication by the scalar $f(\rho)$.  
+	\end{proof}
+	
+	Let $\rho$ be a representation, let $F_{\rho}=\SU(n)\times_{\Gamma}E\Gamma$, then $\{F_{\rho}\}_{ {\rho}\in \mathscr{M}_n}$ form a family of manifolds over $\mathscr{M}_n$, they are the fibres of the total space $F=\mathscr{M}_n\times \SU(n) \times_{\Gamma} E\Gamma$, we get 
+	$$\begin{CD}
+	F_{\rho} @>i_{\rho}>> F\\
+	@. @VV\pi V\\
+	@.     \mathscr{M}_n
+	\end{CD}$$
+	By the previous reduction, we have seen that $A$ is \RKK-equivalent to $C_0(F)$ and the $C_0(\mathscr{M}_n)$ structure on $C_0(F)$ is the obvious one induced by $\pi$. Therefore it suffices to show $F$ is a locally trivial fibration over $\mathscr{M}_n$.The following theorem is well known in algebraic geometry, it is crucial here the moduli space has a manifold structure. 
+	
+	\begin{theorem}
+		$\mathscr{M}_n$ is a smooth manifold with tangent space given by group cohomology $H^1(\Gamma, \mathfrak{su}(n))$.
+	\end{theorem}
+	
+	This fact combined with the following lemma of Ehresmann will finish the proof:
+	\begin{lemma}{(Ehresmann)}
+		Let $X, Y$ be smooth manifolds and $f: X \rightarrow Y$ a smooth map. If 
+		\begin{enumerate}[(1)]
+			\item f is surjective, submersive
+			\item f is proper
+		\end{enumerate}
+		Then $f: X \rightarrow Y$ is a locally trivial fibration.
+	\end{lemma}
+	
+	In our situation, the conditions in the lemma are obviously satisfied as the fibres $F_{\rho}$ are compact. So we have established:
+	\begin{theorem}
+		$A$ is a locally \RKK trivial algebra 
+	\end{theorem}
+	
+	Note throughout the proof, the only technical reason for us to deform our algebra over the moduli space $\mathscr{M}_n$ of irreducile special unitary representation of rank $n$ other than more flexible spaces is the above theorem on manifold structure of $\mathscr{M}_n$. But this also suggest that once we can deform in a smooth fashion, we may drop the restriction of irreducibility. This could be useful as the following example shows:
+	
+	\begin{example}
+		Consider genus $g=2, \Gamma=F_4/N$, where $F_4$ is the free group on four generators $A,B,C,D$ and $N$ is the normal subrgoup generated by the relation ${[A,B][C,D]=I}$. Let's look at a family of representations on $\SU(2)$ depending on two parameters $\lambda=e^{2\pi i \theta},\mu=e^{2\pi i\phi}$ given on generators by the following:
+		
+		$$\rho_{\lambda,\mu}(A)= \begin{pmatrix}
+		\lambda & 0\\
+		0 & \lambda^{-1}
+		\end{pmatrix}, \; \;  \rho_{\lambda,\mu}(B)= \begin{pmatrix}
+		\mu & 0\\
+		0 & \mu^{-1}
+		\end{pmatrix}  $$
+		$$\rho_{\lambda,\mu}(C)= \begin{pmatrix}
+		0 & 1\\
+		-1 & 0
+		\end{pmatrix}, \; \; \; \;  \rho_{\lambda,\mu}(D)= \begin{pmatrix}
+		1 & 0\\
+		0 & 1
+		\end{pmatrix}  $$
+		It's easy to see these representations are all irreducible except at $\lambda=\mu=1$. However the parameter space form a two torus which is a manifold, so our proof still works in this case and we find the various crossed products are $\KK$-equivalent to the one at $\lambda=\mu=1$. Further rotate $C$ over $t \in [0,\pi/2]$ by 
+		$$\rho_t(C)=\begin{pmatrix} 
+		\cos t & \sin t\\
+		-\sin t & \cos t
+		\end{pmatrix}$$
+		\noindent
+		and keep the value at $A,B,D$ fixed as $Id$, we see that the second family of reducible representations are still deforming over a manifold $[0,\pi/2]$. Hence the $\rho_{1,1}=\rho_{\pi/2}$ cross product algebra is \KK-equivalent to that by using $\rho_{0}$ which is the trivial representation. In particular,all their $K$-theory $K^*(A_0 \rtimes_{\rho_{\lambda,\mu}} \Gamma)$ is the same as $\K^*(A_0 \otimes C^*{\Gamma})$ which can be computed by Kasparov Spectral sequence.  
+	\end{example}
+	
+	In general, for a torsion free discrete group $\Gamma$ satisfying the strong Baum-Connes conjecture, $V$ manifold on which $\Gamma$ acts properly by diffeomorphisms via a representation $\rho$, we construct the reduced crossed product algebra $A_{\rho}=C_0(V)\rtimes_{\rho} \Gamma$ as before. Since $\Gamma$ satisfies the strong Baum-Connes conjecture, we get an isomorphism of groups via assembly map between $\K^{*}({V\times_{\Gamma} E\Gamma})$ and $\K_{*}(V\rtimes_{\rho} \Gamma)$. If we deform the group action parameterized by a compact space $X$, then we may form the corresponding $C(X)$-algebra. By the naturality of the construction, we get an isomorphism as bundle of groups over $X$ from $\K^{*}({(X\times V)\times_{\Gamma} E\Gamma})$ to $\K_{*}((X\times V)\rtimes \Gamma)$. The first group is the \K-homology of the homotopy quotient since we can take $E\Gamma$ as the universal space for proper $\Gamma$ actions by torsion freeness assumption on $\Gamma$, the second group is the $\K$-theory for our families of crossed product algebras. In our treatment of the surface group, the left handside is replaced by $\K$-theory instead of $\K$-homology, but they are canonically isomorphism. This can be seen by taking the negatively curved homogeneous space $G/K$ as the model for $\Gamma$ which is equivariantly \textit{Spin} and we can apply the Poincar$\acute{e}$ duality. 
+	
+	
+	\section{K-theoretic invariants}
+	In the previous section, we have proved the invariance of K-theory for family of cross product algebras under suitable assumptions. In the classical example of irrational rotation algebra, it is well known that the ordered K-theory is a Morita invariant and classifies such algebras up to Morita equivalence. Our goal in this section is to analysis invariants which would distinguish different cross product algebras.  The strategy is classical,since K-theory pairs with cyclic cohomology, each cyclic cocycle would produce an invariant. In the case of irrational rotation algebra, ordered K-theory is the image of the pairing of projections with trace, which is a cyclic 1-cocycle. However, it is almost impossible to compute the cyclic cohomology for groupoid operator algebras though we have general results about smooth groupoid algebra. Following the principal of Connes, we just want to construct cyclic cocycles which extends to a pairing with operator algebra K-theory. We have the following theorem of Connes:
+	
+	\begin{theorem}
+		Let $V$ be a manifold and $\Gamma$ a discrete group acting on $V$ by orientation preserving diffeomorphisms. Let $\mathcal{R}$ be the subalgebra of the deRham cohomolgy $H^{\bullet}(V_{\Gamma},\mathbb{C})$ generated by Chern classes of $\Gamma$-equivariant bundles on $V$ and Gelfand-Fuchs classes of the simplicial foliation.
+		
+		Then for each element $P\in \mathcal{R}$, there exist an additive map $\phi$ from $K(C_0(V)\rtimes \Gamma)$ to $\mathbb{C}$ such that 
+		\begin{equation}
+		\phi(\mu(x))=<\Phi \circ \mr{Ch}(x),P>
+		\end{equation} 
+		where $\mu$ is the Baum-Connes assembly map, $x$ a K-homology class in $K_{*}(V_\Gamma)$ with $\mr{Ch}(x)$ its the Chern Character, and $\Phi$ is the Thom isomorphism.  
+	\end{theorem}
+	
+	In the statement of the above theorem, there are three different set of generators for the subring $\mathcal{R}$, one coming from characteristic classes of $\Gamma$-equivariant vector bundles and another from the Gelfand-Fuchs secondary foliation characteristic classes. From the point of view of formal geometry, these characteristic classes can be defined uniformly by diffeomorphism invariant differential forms on jet bundles  [ref .Bott]. 
+	
+	Following the presentation in the last section of [Transverse Fundamental Class], we will recall the construction of the previous pairing. Denote by $J^k(M)$ the space of $k$-jets of an n-dimensional smooth manifold M. An element in $J^k(M)$ is an embedding $j:U \hookrightarrow M$ of an open neighborhood $U$ of $0\in \mathbb{R}^n$ into $M$ where two of such embeddings $j_1,j_2$ are identified if $j_2^{-1} \circ j_1$ maps $0$ to $0$ and has vanishing derivatives of order less than or equal to $k$. For example, the space of 1-jets is the frame bundle of the tangent bundle. In general, any diffeomorphism $f:M\rightarrow M$ lifts by composition to a diffeomorphism $\hat{f}: J^k(M) \rightarrow J^k(M)$. In classical differential geometry, it was noted long time ago that there are families of differential forms defined natrually over $J^k(M)$ that are invariant under all such $\hat{f}$. 
+	
+	Now $O(n)$, the group of orthongonal transformations is acting on all these $J^k(M)$ by pre-composing, so we may form the quotient space $T^k(M)=J^k(M)/O(n)$. It turns out $T^k(M)$ is homotopic to $M$ since as a fibre bundle over $M$, the fibres are contractible. So $T^k(M)$ has the same cohomology theory as $M$. Note that the $O(n)$-action commute with the $\hat{f}$ in the previous, we may look for $\Diff(M)$ invariant forms on $T^k(M)$ or equivalently $O(n)$-basic and $\Diff(M)$-invariant forms on $J^k(M)$. Once we find such a form, say $\alpha$, and for simplicity, let's assume also $\alpha$ is a top form on some $T^k(M)$. Then we may construct an additive map from $K(T^k(M)\rtimes \Gamma)$ to $\mathbb{C}$ by 
+	$$\displaystyle \phi(\sum_{\gamma}e_{\gamma}\cdot \gamma)=\int_{T^k(M)} \mr{Tr}(e_{0})\cdot \alpha$$
+	Where we defined $\phi$ on a projection $\displaystyle e=\sum_{\gamma}e_{\gamma}\cdot \gamma$ in the algebraic crossed product and extend it to the closure via a technically constructed holomorphically closed closure. Though we are working with operator K-theory rather than just singular or deRham cohomology, Connes, inspired by a construction due to Kasparov in [Kas Conspectus], proved that there is a canonical invertible element in $\KK^{\Gamma}_{i}(M, T^1(M))$ where the sub-index $i$ depend on the dimension of $M$. For higher jet bundle, the same conditions on the sectional curvature of the fibre holds, therefore the similar construction applies immediately to all higher jet bundle. So up to a shift in degree, we have an equivariant \KK-equivalence between $M$ and $T^k(M)$. In particular, we have isomorphic K-theory and the above formula indeed defines an additive map from $K_i(M\rtimes \Gamma)$ to $\mathbb{C}$. 
+	
+	In this section, we will enlarge the subring $\mathcal{R}$ when there are geometric structures for $V$. We will focus on the case where $V$ is a complex manifold, not necessarily compact, and $\Gamma$ a pseudogroup of holomorphic transformations. For our application, we will take $\Gamma$ to be a group or we will study a holomorphic etale groupoid where $V$ is the space of units and $\Gamma$ the pseudogroup of local holomorphic maps. Instead of using the real jet bundle, since we are dealing with holomorphic maps rather than just differentiable maps, we will construct holomorphic jet bundles, denoted by $J^k_{h}(V)$. 
+	
+	%% defining the space of k-jets
+	\begin{definition}
+		A holomorphic $k$-jet is represented by a homomorphic embedding $j:U \hookrightarrow V$ where $U$ is a neighborhood of $0\in \mathbb{C}^n$. Two such representative $j_1,j_2$ are represent the same element in the space $J_h^k(V)$ of holomorphic $k$-jet iff for any choice of coordinates $\psi: W\rightarrow \mathbb{C}^n$ where $W$ is an open set in $V$, the two holomorphic maps $f_i=\psi \circ j_i ,i=1,2$ has the same taylor series up to order $k$, more explicitly, they satisfy the following 
+		$$\displaystyle {\frac{\partial^{\norm{\alpha}} f_1^j} {\partial^{\alpha}z} (0)} = \displaystyle {\frac{\partial^{\norm{\alpha}} f_2^j}{\partial^{\alpha}z}(0)}$$
+		for all $ 1\le j\le n$ and multi-indices $\alpha=(\alpha_1,\alpha_2,....\alpha_n)$ such that the total order $\norm{\alpha} = {\sum_{s} \alpha_s}$ is less than $k$. 
+		
+		The set of all $k$-jets is denoted by $J^k_{h}(V)$, we will equip it with a complex manifold structure in the following way. For a fix jet $j$, choose a coordinate chart $\psi$ on the manifold $V$ around $p=j(0) \in W=j(U)$, for any other jet $j^{\prime}$ with $j^{\prime}(0)=p^{\prime} \in W$, form the map $f=\psi \circ j^{\prime}$ and then define the coordinate map from a subset in $J^k_{h}(V)$ to $\mathbb{C}^{N_k}$ by 
+		
+		$$\Psi_{j}(j^{\prime})=(f^l(0),\frac{\partial f^l}{\partial z^i}(0),\frac{\partial^2 f^l}{\partial^{i_1,i_2}z}(0)....\frac{\partial^k f^l}{\partial^{i_1,i_2...i_k}z}(0))$$ 
+		
+		For all $1\le l\le n$ and increasing multi-indices $I= (i_1, i_2, ... i_s)$ such that $\norm{I} \le k$.  
+		The dimensional of $J_h^k(V)$ is then computed by
+		$$N_k = n+n\cdot\binom{n}{1}+n\cdot\binom{n+1}{2}+....+n\cdot\binom{n+k-1}{k}$$
+		
+		Since equivalent jet representatives have identical partial derivatives at $0$ up to degree $k$, the above map defines a coordinate map around $j$. It's a complicated but routine calculation to see that such coordinate maps transform holomorphically. Finally, we can equip a second countable Hausdorff topology by pulling back the topology on $\mathbb{C}^n$ via these $\Psi_j$
+		\qed
+	\end{definition}
+
+	For example, the holomorphic $1$-jet bundle $J^1_{h}(M)$ of a $n$-dimensional complex manifold $M$ is isomorphic to the $\mr{GL} (n,\mb{C})$-principal bundle of complex frames in holomorphic tangent bundle. The isomorphism is given by $j\rightarrow Dj(\frac{\partial}{\partial z^i}), i=1,2....n$. 
+	
+	Now we will construct differential forms on $J^k_h(M)$ which are invariant under holomorphic (local) diffeomorphisms. We start by looking at $J^1_h(M)$ which was identified with the frame bundle of holomorphic tangent bundle. Let $\pi:J^1_h(M) \rightarrow M$ be the projection. 
+	
+	\begin{definition}
+		Define a $\mb{C}^n$-valued differential 1-forms $\Theta$ on $J^1_h(M)$ defined as $$\Theta_j(X)=(Dj)_0^{-1}(\pi_{*}X)$$
+	\end{definition}
+	
+	Alternatively, if we represent $X$ as a varying family of jets $j_t,t\in (-\epsilon,\epsilon)$, with $j_0=j$, we may also define $\Theta$ by n differential 1-forms $\theta_i,1\le i\le n$. Let $f_t=j^{-1}\circ j_t$ which is a family of local holomorphic diffeomorphism of $0\in \mb{C}^n$. Set 
+	$$\theta_i(X)=\theta_i(j_t)=\dfrac{d}{dt}\Bigr|_{\substack{t=0}}f^i_t(0)$$
+	The second expression is invariant under local biholomorphic maps. To see this, if $f:U \rightarrow V$ is such a map, we compute $f^{*}\theta_i(X)$ as follows:
+	\begin{align*}
+	&(f^*\theta_i)_{\substack{j}}(X)
+	=(\theta_i)_{{f\circ j}}(f_*X)
+	=(\theta_i)_{{f\circ j}}(f\circ j_t)\\
+	=&\dfrac{d^i}{dt}\Bigr|_{t=0} (f \circ j)^{-1} \circ {f \circ j_t}
+	=\dfrac{d^i}{dt}\Bigr|_{t=0} j^{-1}\circ j_t
+	=\dfrac{d}{dt}\Bigr|_{t=0}f^i_t      
+	\end{align*}  
+	
+	In a completely similar way, we can define the invariant forms on higher jets. By our description above, a $k$-jet is represented up by equivalence classes of embeddings 
+	$j: U \rightarrow V, j(0) = x \in M$. We define a collection of $1$-forms $\theta^k_{I, i}$ where $I$ is an multi-index with total order $\norm{I}$ less than or equal to $k$, $1 \le i \le n$. For a tangent vector $X$ at $j \in J_h^k(V)$, represented by a family of $k$-jets $j_t$, let $f_t = j^{-1} j_t$ as before and we define the value of $\theta^k_{I, i}$ at $X$ by
+	\begin{equation}
+		\theta^k_{I, i}\big|_{j} = \frac{d}{dt}\Bigr|_{t = 0} \frac{\del^{\norm{I}}f_t^i}{\del^I z}(0)
+	\end{equation}
+	More explicitly, if we expand each $f^i_t(x)$ into its formal holomorphic taylor series, then we evaluate the derivative at zero of the coefficient for the term $z^I$.
+	
+	It's easy to verify that $\theta^k_{I, i}$ is dependent of the choice of representatives. In addition, we always have a forgetful map $\pi_{k,l}: J_h^k(V) \rightarrow J_h^{l}(V)$ for $k > l$ which is a fiber bundle with contractible fibers. The natural $\mr{GL}(n,\mb{C})$ action on $J_h^1$ lifts naturally to an action on each $J^k_h(V)$, compatible with the projection maps $\pi_{k,l}$. So we can extend the group action to $J_h^{\infty}(V)$
+	
+	\begin{proposition} The tautological one forms defined above satisfies the following
+		\begin{enumerate}
+			\item The one forms $\theta^k_{I, i}$ are invariant under germs of holomorphic diffeomorphisms.
+			\item They are stable in the sense that for the projection map $\pi_{k,l}$ defined above, we have 
+			\begin{equation}
+			\pi_{k,l}^{*} \theta^l_{I, i} = \theta^k_{I, i}
+			\end{equation} 
+			for all multi-indices $I$ such that $\norm{I} \le l$. 
+			\item They are holomorphic $1$-forms for the complex manifold structure constructed before on $J_h^{\bullet}(V)$.
+			\item The $\mr{GL}(n,\mb{C})$ action on each $J^{k}_h(V)$ preserves the finite dimensional vector space spanned by $\theta^i_I, \norm{I} \le k$. 
+		\end{enumerate}
+		
+	\end{proposition}
+	
+	Therefore on the space of infinite jet bundle $J^{\infty}$, we have constructed a family of invariant holomorphic $1$-forms. Since the forms are stable, we omit the upper index $k$ and write $\theta^i_{I}$, which is defined on the jet bundle of order at least $\norm{I}$. Just by taking conjugation, the anti-holomorphic forms will also be invariant under local bi-holomorphic maps, therefore, if we denote by $I(J_h^{\infty})$ to be the algebra of invariant differential forms on $J_h^{\infty}$, then $I(J_h^{\infty})$ contains the subalgebra $I_\theta(J_{h}^{\infty})$ generated by all the $\theta_{i, I}$ and $\bar{\theta}_{i, I}$.
+	
+	We would like to study the properties of $\theta$ under exterior differential. Over $J_h^1(V)$, we set
+	\begin{equation}
+	  d\theta^i = - \omega^{i}_{j} \wedge \theta^j 
+	\end{equation}
+	for some matrix of $1$-forms $\omega^{i}_{j}$. Since $d = \del + \delbar$ and $\theta^i$ is holomorphic, by our defining expressions we see that on $J_h^2(V)$
+	\begin{equation}
+	  d\theta^i = \del\theta^i = -\theta^{i}_{j} \wedge \theta^j 
+	\end{equation}
+	and $\omega^{i}_{j}$ is given by the pull back of $\theta^{i}_{j}$ via a section $J_h^1(V) \rightarrow J^2_h(V)$ which is unique up to homotopy. Note that in general we can only take the section to be smooth but not holomorphic, so $\omega^{i}_{j}$ is just a smooth complex one form and possibly has nonzero $(0, 1)$-component. 
+	
+	If we choose the section in a way such that it is equivariant under the $\mr{GL}(n, \mb{C})$ action, then $\omega^{i}_j$ give rise to an affine connection on $T^{1,0}V$. If in addition $\omega^{i}_j$ is concentrated in degree $(1,0)$, then the affine connection has its $\delbar$-component given by $\delbar_V$. We know, for example, the Chern connection for $T^{1,0}V$ satisfies this property.
+	
+	Now on $J_h^3(V)$, we may compute the curvature of the universal connection one form $\theta^{i}_{j}$ by the well known formula
+	\begin{equation}
+	  \Omega^i_j = d\theta^i_j - \theta^k_j \wedge \theta^i_k
+	\end{equation}  
+	And it's not hard to compute that $\Omega^i_j = \theta^k \wedge \theta ^i _{jk}$. In general, we may compute the differential $d\theta^i_{I}$ by chain rule.
+	
+	%\begin{proposition} On a the jet space of order at least $\norm{I} + 1$, we have
+	%	\begin{equation}
+	%		d\theta^i_{I} = \del\theta^i_{I} = \sum_{J, K} \theta^k_{J} \wedge \theta^i_{K}
+	%	\end{equation}
+	%	where $k \in K$ and $I = J \cup (K-\{k \})$.
+	%\end{proposition}
+	
+	%Taking the conjugates of previous results, we obtain the differential equations for %$\bar{\theta}^i_{I}$ as well.
+	%\begin{equation}
+	%  d\bar{\theta}^i_I = \delbar\bar{\theta}^i_{I} 
+	%  = \sum_{J, K} \bar{\theta}^{k}_{J} \wedge \bar{\theta}^i_K 
+	%\end{equation}
+	
+	Therefore, the algebra of invariant forms generated by $\theta$ and their conjugates $I_\theta(J_{h}^{\infty})$ is closed under $d$. To compute cohomological invariants, we need to restrict further to those forms that are invariant under group action. We start with the Bianchi identity for the universal connection and curvature.
+	
+	\begin{proposition} If we denote by $\Theta$ and $\Omega$ the matrix one forms, then
+		\begin{equation}
+			d\Omega = [\Theta, \Omega]
+		\end{equation}
+	\end{proposition}
+	\begin{proof} Note that $\Omega$ is a two form and $\Theta$ is an one form, we have 
+		\begin{align*}
+			& d\Omega 
+			= d(d\Theta - \Theta \wedge \Theta) 
+			= -d\Theta \wedge \Theta + \Theta \wedge d\Theta \\
+			& = - \Omega \wedge \Theta + \Theta \wedge \Omega = [\Theta, \Omega]  
+		\end{align*} 
+	\end{proof}
+
+	It is easy to see the fibers for $\pi_{k,l}$ are contractible and consequently, all the higher jet spaces $J^k_h(V)$ are homotopic to $J_h^1(V)$. If we consider the quotient spaces $M^k(V) = J^{k}_h(V)/\mr{GL}(n, \mb{C})$, they are all equivalent to $V$ so we can think of $M^k(V)$ as thickenings of $V$ with $M^1 = V$. Motivated by Weyl unitary trick from representation theory of semi-simple groups, instead of taking the quotient by $\mr{GL}(n, \mb{C})$, we define 
+	$$V^k = J^k_h(V)/ \mr{U}(n, \mb{C}) $$
+	and we have the obvious quotient map 
+	$$q_k: V^k \rightarrow M^k$$
+	which is a fibration with fiber the homogeneous space $\mr{GL}(n, \mb{C})/\mr{U}(n, \mb{C})$. This is a negatively curved contractible homogeneous space, therefore by Kasparov's theorem, $M^k$ is equivariantly $KK$-equivalent to $V^k$ and consequently, they are all equivariantly $KK$-equivalent to the base manifold $V$. This allows us to construct $K$-theoretic invariants on the infinitesimal thickening $V^{\infty}$ by differential geometric objects.
+	
+	Let $\mf{a}_n$ be the $\mb{Z}$-graded exterior algebra over $\mb{C}$ generated by degree $1$ symbols $\theta^i_I$ and their conjugates $\bar{\theta}^i_I$ where as before $i$ is between $1$ and $n$ and $I$ is an multi-index. We endow $\mf{a}_n$ with $\mr{U}(n)$-action and differential $d$ by previous calculations, we then have a differential graded (Lie)-algebra with unitary group action. 
+	
+	Let $H(\mf{a}_n; \mf{u}(n))$ be the cohomology of $\mf{a}_n$ relative to the Lie algebra $\mf{u}$, then we have a sequence of maps
+	$$ H(\mf{a}_n; \mf{u}(n)) \rightarrow H(V^{\infty}) \rightarrow H(V)$$   
+	where the first map is induced by the inclusion of complexes
+	$$(\mf{a}_n, \mf{u}(n), d) \rightarrow (I_\theta( J^{\infty} V)^{\mr{U}(n, \mb{C})}, d) \rightarrow  (\mc{A}^{\bullet}(V^{\infty}), d)$$
+	and the second map is an isomorphism induced by homotopy. Here we take the deRham cohomology for $V^{\infty}$ and $V$, where $H^{V^{\infty}}$ is understood to be the cohomology of inverse limit of complexes $(\mc{A}^{\bullet}(V^k), d)$ for all $k$. 
+	
+	\begin{example}
+		Consider the matrix of degree $2$ elements $\Omega$, and define a family of forms $c_k$ by
+		\begin{equation}
+		    c_k (\Omega) = \mr{Tr}(\Omega ^ k)
+		\end{equation}
+		Then $c_k$ are invariant under $\mr{U}(n)$-actions. Using the Bianchi identity, we see they are closed and therefore represent cohomology classes in $H(\mf{a}_n; \mf{u}(n))$. Under the above map to $H(V)$, they correspond to the usual Chern classes on V. 
+	\end{example}
+	
+	\begin{remark}
+		In general, $V$ is $n$-dimensional complex manifold, so if we take any cohomology class in $H(\mf{a}_n; \mf{u}(n))$ that is of degree larger than $2n$, then the above map is zero just by degree reasons. It was an observation of Bott that such cohomology classes would contribute to secondary cohomology classes when $V$ is a codimension $n$ foliation.
+	\end{remark}
+
+	By our construction of the cohomology, for any cohomology class $[\alpha]$, it is represented by an invariant differential form $\alpha$ on some $V^k$ for $k$ large enough. By Kasparov's theorem, there is a canonical $KK^{\Gamma}$-invertible element in $KK^{\Gamma}(V, V^{k})$ for any $k$, so we just need to perform constructions on $V^k$. For each $\alpha$ that is defined on $V^k$, we can construct an additive map from $K^{*}(V^k \rtimes \Gamma)$ to $\mb{C}$ as follows.  
+	
+	We define $\phi$ on the smooth dense subalgebra of compactly supported elements $e = \sum_{\gamma} e_\gamma \cdot \gamma $ by  
+	\begin{equation}
+		\phi (e ) = \int_{V^k} \mr{Tr}(e_0) \cdot \alpha
+	\end{equation}
+	and then extend it to some holomorphically closed subalgebra. 
+
+	\begin{theorem}
+		Let $V$ be a complex manifold, $\Gamma$ a discrete group acting on $V$ by bi-holomorphic transformations. Let $\mc{R}$ be the subalgebra of the deRham cohomology $H^{\bullet}(V_\Gamma, \mb{C})$ generated by Chern classes of $\Gamma$-equivariant bundles on $V$ and image of $H^{\bullet}(\mf{a}_n; \mf{u}(n))$ of the simplicial foliation. Then for any element $P \in \mc{R}$, there exist a map $\phi$ from $K(C_0(V)\rtimes \Gamma)$ to $\mb{C}$ such that
+		\begin{equation}
+			\phi(\mu(x)) = <\Phi \circ \mr{Ch}(x), P>
+		\end{equation}
+		where $\mu$ is the Baum-Connes assembly map, $x$ a $K$-homology class in $K_*(V_\Gamma)$ with $\mr{Ch}(x)$ its Chern character, and $\Phi$ is the Thom isomorphism.
+	\end{theorem}
+	
+	Next we recall the twisted deRham complex for $(V, \Gamma)$. We consider the crossed product deRham complex $(\mc{A}_c^{\bullet}(V) \rtimes \Gamma, d_V )$ as follows 
+	$$\mc{A}_c^{0}(V) \rtimes \Gamma \overset{d_V}{\longrightarrow} \mc{A}_c^{1}(V) \rtimes \Gamma \overset{d_V}{\longrightarrow}... \overset{d_V}{\longrightarrow} \mc{A}_c^{2n}(V) \rtimes \Gamma$$ 
+	where $\mc{A}^{\bullet}_c(V)$ is the compactly supported forms on $V$ of and we take the algebraic crossed product with group $\Gamma$. 
+	
+	Then if we take any closed invariant forms $\alpha$ on $V$, we can define the following cyclic $n$-cocycle $\tau_{\alpha}$
+	\begin{definition} For any $a_0, a_1, ..., a_n$ in $\mc{A}^{0}_c(V) \rtimes \Gamma$, we define
+		\begin{equation}
+		\tau_{\alpha}(a_0, a_1, ..., a_n) = \int_{V} (a_0 \cdot d a_1 \cdot d a_2 ...d a_n)_{e \in \Gamma} \cdot \alpha
+		\end{equation}
+		where $(...)_e$ means taking the value of $(...)$ at the group element $e$ in $\Gamma$. 
+	\end{definition}
+	
+	In order to show $\tau_{\alpha}$ is a cyclic cocycle on $\mc{A}^{0}_c(V) \rtimes \Gamma$, we will construct its associated differential graded algebra and closed graded trace. Let $(\mc{A}^{\bullet}, d)$ be the twisted deRham differential graded algebra, then define a linear map
+	$\int \mc{A}^{\bullet} \rightarrow \mb{C}$ by
+	\begin{equation}
+	\int \omega = \int_{V} \omega_e \wedge \alpha 
+	\end{equation} 
+	
+	\begin{proposition}
+		$(A^{\bullet}, d, \int)$ is a closed graded trace on $A^0$.
+	\end{proposition}
+	\begin{proof}
+		First, the linear functional $\int $ vanishes on $\mc{A}^{k}$ for $k < n$ since $\omega_e \wedge \alpha $ will not be a top form on $V$, so the linear functional $\int $ is of dimension $n$. 
+		
+		Next, let $\omega \in \mc{A}^{\bullet}$ and we compute
+		\begin{align*}
+		\int d\omega = \int_V (d{\omega})_e \wedge \alpha 
+		= \int_V (d{\omega}_e) \wedge \alpha
+		\end{align*}
+		since $d{\alpha} = 0$, by Stokes formula, we have
+		\begin{align*}
+		\int_V (d{\omega}_e) \wedge \alpha = \int_V d{(\omega_e \wedge \alpha)} = 0
+		\end{align*}
+		
+		Next, for $\omega_1, \omega_2 \in \mc{A}^{\bullet}$, to comapre $\int \omega_1 \cdot \omega_2$ with $\int \omega_2 \cdot \omega_1$, we may assume that $\omega_1 = \eta_1 \delta_g$ and $\omega_2 = \eta_2 \delta_{g^{-1}}$ with $\eta_i \in \mc{A}_c^{0, \bullet}(V)$ and $g \in \Gamma$, then 
+		\begin{align*}
+			 \omega_1 \cdot \omega_2 = \eta^1\wedge g^* \eta^2 \otimes \delta_e 
+		\end{align*}
+		where $\delta_e$ is the Dirac function at $e \in \Gamma$. Similarly we hae
+		\begin{align*}
+			 \omega_2 \cdot \omega_1 = \eta^2\wedge (g^{-1})^* \eta^1 \otimes \delta_e 
+		\end{align*}
+		Using the invariance of $\alpha$ under $\Gamma$, we have
+		\begin{align*}
+			\int \omega_1 \cdot \omega_2 
+			&=\int_V \eta^1\wedge g^* \eta^2 \wedge \alpha 
+			=\int_V g^*[ (g^{-1})^*\eta^1\wedge \eta^2] \wedge \alpha \\
+			&=\int_V g^*[ (g^{-1})^*\eta^1\wedge \eta^2 \wedge \alpha] 
+			=\int_V (g^{-1})^*\eta^1\wedge \eta^2 \wedge \alpha \\
+		\end{align*}
+		Finally, since the deRham algebra is graded commutative, we have 
+		\begin{align*}
+			\int \omega_1 \cdot \omega_2
+			= (-1)^{\deg{\eta_1}\deg{\eta_2}} \int_V \eta^2\wedge (g^{-1})^* \eta^1 \wedge \alpha 
+			= (-1)^{\deg{\eta_1}\deg{\eta_2}} \int \omega_2 \cdot \omega_1	
+		\end{align*}
+	\end{proof}
+
+	Among all the invariant forms, we will specify a class of forms which are the holomorphic half of volume forms, which enables us to express the cyclic cocycles in terms of the twisted Dolbeault complexes. We illustrate the construction on $J_h^1(V)$ where we have constructed the invariant forms $\theta^i$ and their conjugates.
+	 
+	\begin{definition}
+		Let $s: J_h^1(V) \rightarrow J_h^2(V)$ be a section of the fiber bundle, which is unique up to homotopy. We define the holomorphic volume form $\alpha_1$ on $J^1$ by
+		\begin{equation}
+			\alpha_1 = \prod_i \theta^i \wedge \prod_{i,j} s^*(\theta^{i}_j)
+		\end{equation}
+	\end{definition}
+		
+	\begin{lemma}
+		$\alpha_1$ is independent of the choice of the section $s$ and is a nonwhere vanishing section of the canonical bundle on $J_h^1(V)$.
+	\end{lemma}
+	\begin{proof}
+		There is an exact sequence of holomorphic tangent bundles
+		\begin{equation}
+		0 \rightarrow T^{1,0}J_h^1(V)/V \rightarrow T^{1,0}J_h^1(V) \rightarrow \pi_1^* T^{1,0}V \rightarrow 0
+		\end{equation}   
+		Even though this does not split as holomorphic vector bundles, any choice of $s$ gives a splitting as smooth vector bundles. So we can write
+		$$T^{1,0}J_h^1(V) =  T^{1,0}J_h^1(V)/V \oplus \pi_1^* T^{1,0}V$$
+		in the sense of smooth vector bundle.
+		
+		We take the dual of the exact sequence, then note that $\pi_1^* T^{*1,0}V$ is canonically trivialized by the frame $\theta^i$ and the vertical cotangent bundle $T^{*1,0}J_h^1(V)/V$ is canonically trivialized by the fiberwise Mauer-Cartan one forms $\omega^{\mr{MC}}$. Note that $s^* \Theta$ restricts to $\omega^{\mr{MC}}$.
+		
+		Therefore $T^{* 1,0}J_h^1(V)$ is a trivial bundle. The choice of a splitting gives a trivialization of $T^{* 1,0}J_h^1(V)$.
+		
+		If we take top exterior power of the splitting, we get a canonical trivialization of $\Lambda^{\mr{top}}T^{1,0}J_h^1(V)$ with canonical section $\alpha_1$. This can be seen by noting
+		$$\prod_{i,j} s^*{\theta^i_j} = \prod_{i, j} \omega^{i}_j $$  
+		when restricted to the vertical fiber $J_h^1(V)/V$ and that
+		$\prod_k \theta^k$ 
+		is a canonical horizontal form of top degree. Therefore $\alpha_1$ is independent of the splitting and concentrated in bidegree $(n+ n^2, 0)$. 
+		
+		In addition, we can always work locally on $V$ and assume it is a polydisc in $\mb{C}^n$ and choose $s$ as a holomorphic splitting. Then by the previous arguments, $\alpha$ is independent of this (local) choice of $s$ and hence $\alpha_1$ is holomorphic and nonzero.
+	\end{proof}
+	
+	In a similar fashion, we can define the holomorphic "volume" form $\alpha_k$ for each $J^k_h(V)$ by taking the exterior products of all the $\theta^i_I$ with $\norm{I} \le n+1$. Again, the forms with $\norm{I} = k + 1$ is not defined on $J^k_h(V)$ and we need to choose a splitting to make sense of them, but a similar argument shows that the form $\alpha_k$ is independent of the splitting and defines nowhere vanishing  section of the canonical bundle.
+	
+	% Next, we compute the $\mr{U}(n, \mb{C})$ action on $\alpha_1$
+	% \begin{lemma}
+	%	If $g \in \mr{SU}(n)$, then $g^{*}\alpha_k = \alpha_k$.
+	% \end{lemma}
+
+	% \begin{proof}
+		% Without loss of generality, we can work locally on $V$ and assume $g$ is diagonal %of the form $g = \mr{diag}(\lambda_1, \lambda_2, ...\lambda_n)$. By the definition %of $\theta^i_I$, we see $g^* \theta^i_I = \lambda_i \theta^i_I$. Therefore we have
+		% \begin{equation}
+		% g^{*}\alpha_k = (\prod_{i, I} \lambda_i)\alpha_k
+		% \end{equation}
+		% by symmetry of the upper index $i$, they appear the same number of times, so the result follows by unimodular assumption on $g$.
+	% \end{proof}
+	
+	% \begin{remark}
+	%	Unfortunately $\alpha_k$ are not invariant under $\mr{U}(n, \mb{C})$ action, and therefore only descend to a form on $J^k_h(V)/SU(n)$, which are homotopic to a circle bundle over $V$. If we assume $V$ is 2-connected, then the circle bundle is homotopic to product $V \times S^1$ and we know there is an degree shift isomorphism in their $ K$-theory 
+	%	$$K^{*}(J^k_h(V)/SU(n)) \simeq K^{*+1}(V) $$  
+	%	And we can construct $K$-theory invariants using $J^{\bullet}_h(V)/SU(n)$.
+	%\end{remark}
+
+	\begin{definition}
+		The twisted Dolbeault differential graded algebra is defined as follows. We consider the crossed product Dolbeault complex $(\mc{A}_c^{0,\bullet} (V) \rtimes \Gamma, \delbar_V )$  where $\mc{A}^{0,\bullet}_c(V)$ is the compactly supported forms on $V$ of type $(0, \bullet)$ and  we take the algebraic crossed product with group $\Gamma$. Since $\Gamma$ is assumed to act via holomorphically, $\mc{A}^{0,\bullet} \rtimes \Gamma$ is closed under the twisted products. 
+		
+		The differential $\delbar_V$ is the extension of the usual $\delbar$ operator on $\mc{A}_c^{0,\bullet} (V)$. So we get a complex
+		  
+		$$\mc{A}_c^{0, 0}(V) \rtimes \Gamma \overset{\delbar_V}{\longrightarrow} \mc{A}_c^{0, 1}(V) \rtimes \Gamma \overset{\delbar_V}{\longrightarrow}... \overset{\delbar_V}{\longrightarrow} \mc{A}_c^{0, n}(V) \rtimes \Gamma$$ 
+		
+		Again under the assumption that $\Gamma$ is acting holomorphically, we have
+		\begin{equation}
+			\delbar (a\cdot b) = \delbar a \cdot b + (-1)^{\deg{a}} a \cdot \delbar {b}
+		\end{equation}
+	\end{definition}
+	
+	Define $\tau_{\alpha_k}$ as a cyclic cocycle as before, we show that it can be expressed as a closed graded trace on the twisted deRham differential graded algebra.
+	\begin{lemma} For any $a_0, a_1, ..., a_n \in \mc{A}_c^0(J^k_h(V)) \rtimes \Gamma$
+		\begin{equation}
+			\tau_{\alpha_k}(a_0, a_1, ..., a_n) 
+			= \int_{J^k_h(V)} a_0 \cdot da_1 \cdot da_2 ...\cdot da_n \cdot \alpha_k 
+		\end{equation}
+	\end{lemma}
+	\begin{proof}
+		We just need to note that $\del a_i \cdot \alpha_k = 0$ for any $i$ and hence we can replace all the exterior derivative $d$ by $\delbar$.
+	\end{proof}
+
+	The advantage of being able to work with twisted Dolbeault complex is the following result concerning connections and curvatures for holomorphic vector bundles. 
+	
+	\begin{lemma}\label{holomorphic connection}
+		If $E$ is a compactly supported holomorphic vector bundle on a complex manifold $W$, then it can be represented by a projection $p$ with entries in $\mc{A}^{0}(W)$ such that the Grassmann connection $\nabla = p\circ d\circ p$ is compatible with the holomorphic structure on $E$.
+	\end{lemma}
+	
+	
+	\begin{proof}
+		By the assumption on $E$, we can find a finite covering $U_{i}, 1\le i \le N$ such that $E$ is represented by holomorphic transition functions $\lambda_{ij}$ on the overlap $U_{ij}$, that is $\lambda_{ij}$ is a $r(E) \times r(E)$ matrix with values in holomorphic functions. We also choose a partition of unity $f^2_{i}$ for the covering.
+		
+		Now we construct the projection $p$ as a $M \times M$-matrix where $M = r(E) \times N$.  The value of $p$ at its $(ij)$-block matrix is defined by
+		\begin{equation}
+			p_{ij} = f_i \lambda_{ij} f_j
+		\end{equation}
+		Then we compute  
+		\begin{align*}
+			&(p^2)_{ij} 
+			= p_{ik}p_{kj} = \sum_k f_i \lambda_{ik} f_k\cdot f_k \lambda_{kj} f_j \\
+			& = f_i \lambda_{ik}\lambda_{kj}f_j \sum_k{ f^2_k } 
+			= f_i \lambda_{ij} f_j 
+			= p_{ij}
+		\end{align*}
+		where we used the cocycle condition for $\lambda_{ij}$
+		\begin{equation}
+			 \lambda_{ik}\lambda_{kj} = \lambda_{ij}, \forall i, j, k
+		\end{equation}
+		so $p$ is a projection. 
+		
+		If we set $\nabla = p \circ d \circ p$ as the Grassmann connection, then its curvature $\nabla^2$ is computed as 
+		\begin{align*}
+			\nabla^2 (s) 
+			& = p\circ d\circ p^2 \circ d (ps) = p \circ d (p\cdot d(ps)) \\
+			& = p[dp\wedge d(ps) + p d^2(ps)] 
+			  = p(dp \wedge dp \cdot s - p\cdot dp\cdot p \wedge ds)
+		\end{align*}
+		The second term vanishes because 
+		\begin{equation*}
+			dp = d(p^2) = dp\cdot p + p\cdot dp
+		\end{equation*}
+		so if we multiply by $p$ on the left and use $p^2 = p$ again we would get
+		\begin{equation}
+			p\cdot dp = p\cdot dp \cdot p + p\cdot dp
+		\end{equation}
+		and hence $p\cdot dp \cdot p = 0$. This implies the curvature $\nabla^2$ is given by $\mc{R} = p\cdot dp\cdot dp$. The connection $\nabla$ is compatible with the holomorphic structure if the $(0, 2)$-component of the curvature $p\cdot \delbar p\cdot \delbar p$ is identically zero and we will verify this below.
+		
+		To start, we compute
+		\begin{align*}
+			\delbar{p}_{ij} 
+			& = (\delbar f_i)\lambda_{ij}f_j + f_i \delbar(\lambda_{ij})f_j + f_i \lambda_{ij} (\delbar f_j) \\
+			& = (\delbar f_i)\lambda_{ij}f_j + f_i \lambda_{ij} (\delbar f_j)
+		\end{align*}
+		where $\delbar \lambda_{ij} = 0$ since the bundle is holomorphic. Now we compute
+		\begin{align*}
+			(\delbar{p}\delbar{p})_{ij}
+			& = \sum_k (\delbar f_i)\lambda_{ik}f_k \cdot (\delbar f_k)\lambda_{kj}f_j 
+			         + (\delbar f_i)\lambda_{ik}f_k \cdot f_k \lambda_{kj}(\delbar f_j)\\
+			&        + f_i \lambda_{ik} (\delbar f_k) \cdot (\delbar f_k)\lambda_{kj}f_j
+			         + f_i \lambda_{ik} (\delbar f_k) \cdot f_k \lambda_{kj}(\delbar f_j)\\
+			&= \sum_k (\delbar f_i)f_k \cdot (\delbar f_k)f_j \lambda_{ij} 
+			         + (\delbar f_i)f_k \cdot f_k (\delbar f_j) \lambda_{ij}\\
+			&        + f_i (\delbar f_k) \cdot (\delbar f_k)f_j \lambda_{ij}
+			         + f_i (\delbar f_k) \cdot f_k (\delbar f_j) \lambda_{ij}\\
+		\end{align*}
+		Since $\sum_k f^2_k = 1$, we have the following two identities
+		\begin{align*}
+			& \sum_k f_k\delbar f_k = 0 \\
+			& \sum_k \delbar f_k\delbar f_k =0 
+		\end{align*}
+		substitute them into the above equality, there is only one term that is nonzero, we get the following expression 
+		\begin{equation}
+		   (\delbar{p} \cdot \delbar{p})_{ij} = \delbar(f_i)\delbar(f_j)\lambda_{ij}
+		\end{equation}
+		Finally we can compute $p \cdot \delbar p \cdot \delbar p$ as
+		\begin{align*}
+			(p \cdot \delbar p \cdot \delbar p)_{ij} 
+			& = \sum _k f_i \lambda_{ik} f_k \cdot \delbar(f_k)\lambda_{kj}\delbar(f_j) \\
+			& = (\sum_k f_k\delbar{f_k}) \cdot f_i \lambda_{ij} \delbar{f_j} = 0
+		\end{align*}
+	\end{proof}
+	
+	So far, we have constructed cyclic cocycles $\tau_{\alpha_k}$ using twisted Dolbeault complex and invariant holomorphic volume forms $\alpha_k$. We showed that it can be defined by twisted deRham complex. Therefore we can apply the general technical construction of Connes to get an additive map 
+	$$\phi_k: K^*(J_h^k(V) \rtimes \Gamma ) \rightarrow \mb{C}$$
+	
+	\begin{proposition}
+		 If $[E]$ is a $K$-theory element in $K^0(J_h^k(V))$ that is representable by a holomorphic vector bundle $E$, we denote by the same notation $[E]$ for its image under the map $K^*(J^k_h(V)) \rightarrow K^*_h( J^k_h(V) \rtimes \Gamma)$ induced by inclusion. Then $\phi_k([E]) = 0$
+	\end{proposition} 
+	\begin{proof}
+		By lemma \eqref{holomorphic connection}, we can choose the projection $p_E$ which represents $[E]$ in such a way that 
+		$$p_E\cdot \delbar p_E \cdot \delbar p_E= 0$$
+		
+		So the cyclic cocycle $\tau_{\alpha_k}$ evaluated at $p_E$ gives
+		\begin{equation}
+			\tau_{\alpha_k}(p_E, p_E, ..., p_E) = \int_{J^k(V)} p_E\cdot \delbar p_E ... \cdot \delbar p_E \alpha_k = 0 
+		\end{equation}  
+	\end{proof}
+	
+	On the other hand, all of $J_h^k(V)$ are homotopic to $J_h^1(V)$, if we choose a section $s: J_h^1(V) \rightarrow J^{\infty}_h(V)$, then we obtain a homotopy by contracting the affine fiber space to the section $s$. If we denote by $s_k$ the section on $J^{k}_h(V)$ by restricting $s$, then $s_K$ and the projection $\pi_k$ gives a $KK^{\Gamma}$ equivalence of $C_0(J_h^1(V))$ and $C_0(J_h^k(V))$. So we can view all the $\phi_k$ as additive maps defined on $K^*(J^1_h(V) \rtimes \Gamma)$. 
+	
+	\begin{remark}
+		It's not clear that whether all the $\phi_k$ just coincide or defines different $K$-theory invariants. 
+	\end{remark}
+	
+\end{document}
+  
+    
